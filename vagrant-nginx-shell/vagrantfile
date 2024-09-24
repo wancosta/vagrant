@@ -1,0 +1,41 @@
+# Vagrantfile para VM Ubuntu 20.04 com rede em modo bridge
+Vagrant.configure("2") do |config|
+  
+    # Definir a box do Ubuntu 20.04
+    config.vm.box = "ubuntu/focal64"
+    
+    # Definir o nome da VM
+    config.vm.hostname = "vagrant-nginx"
+    
+    # Configuração de rede em modo bridge
+    config.vm.network "public_network", bridge: "TP-Link Wireless MU-MIMO USB Adapter" # Substitua pelo nome correto da interface no seu sistema
+    
+    # Esta configuração faz o redirecionamento da porta 8080 para a 80.
+    config.vm.network "forwarded_port", guest: 80, host: 8090
+
+    # Definir a quantidade de memória RAM (opcional)
+    config.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+      vb.cpus = 1
+    end
+    
+    # Sincronizar uma pasta do host com a VM
+    # O primeiro argumento é o caminho no host, e o segundo é o caminho na VM
+    config.vm.synced_folder "./pasta_local", "/vagrant/pasta_remota", create: true
+
+    # Provisionar a VM com um script shell
+    config.vm.provision "shell", inline: <<-SHELL
+        # Atualizando o Ubuntu
+        sudo apt-get update -y && sudo apt-get upgrade -y
+
+        # Instalando o Nginx
+        sudo apt-get install -y nginx
+
+        # Substituindo o arquivo padrão do Nginx por um arquivo HTML customizado
+        sudo cp /vagrant/pasta_remota/index.html /var/www/html/index.nginx-debian.html
+
+        # Reiniciando o Nginx para aplicar a mudança
+        sudo systemctl restart nginx
+    SHELL
+
+  end
