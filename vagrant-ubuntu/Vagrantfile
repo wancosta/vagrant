@@ -1,0 +1,24 @@
+# Vagrantfile para VM Ubuntu 20.04 com rede em modo bridge
+
+Vagrant.configure("2") do |config|
+  
+    # Definir a box do Ubuntu 20.04
+    config.vm.box = "ubuntu/focal64"
+    
+    # Definir o nome da VM
+    config.vm.hostname = "ubuntu20-vm"
+    
+    # Configuração de rede em modo bridge
+    config.vm.network "public_network", bridge: "en0: Wi-Fi (AirPort)" # Substitua pelo nome correto da interface no seu sistema
+  
+    # Definir a quantidade de memória RAM (opcional)
+    config.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+      vb.cpus = 2
+    end
+    
+    # Sincronizar uma pasta do host com a VM
+    # O primeiro argumento é o caminho no host, e o segundo é o caminho na VM
+    config.vm.synced_folder "./pasta_local", "/vagrant/pasta_remota", create: true
+
+  end
