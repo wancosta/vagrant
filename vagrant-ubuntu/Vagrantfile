@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
     config.vm.hostname = "ubuntu20-vm"
     
     # Configuração de rede em modo bridge
-    config.vm.network "public_network", bridge: "TP-Link Wireless MU-MIMO USB Adapter" # Substitua pelo nome correto da interface no seu sistema
+    config.vm.network "public_network", bridge: "TP-Link Wireless MU-MIMO USB Adapter", ip: "192.168.15.70" # Substitua pelo nome correto da interface no seu sistema
   
     # Definir a quantidade de memória RAM (opcional)
     config.vm.provider "virtualbox" do |vb|

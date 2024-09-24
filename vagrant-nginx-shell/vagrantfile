@@ -8,10 +8,10 @@ Vagrant.configure("2") do |config|
     config.vm.hostname = "vagrant-nginx-cep"
     
     # Configuração de rede em modo bridge
-    config.vm.network "public_network", bridge: "TP-Link Wireless MU-MIMO USB Adapter" # Substitua pelo nome correto da interface no seu sistema
+    config.vm.network "public_network", bridge: "TP-Link Wireless MU-MIMO USB Adapter", ip: "192.168.15.65" # Substitua pelo nome correto da interface no seu sistema
     
-    # Esta configuração faz o redirecionamento da porta 8080 para a 80.
-    config.vm.network "forwarded_port", guest: 80, host: 80
+    # Esta configuração faz o redirecionamento da porta 8000 para a 80.
+    config.vm.network "forwarded_port", guest: 80, host: 8001
 
     # Definir a quantidade de memória RAM (opcional)
     config.vm.provider "virtualbox" do |vb|
