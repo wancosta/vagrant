@@ -1,1 +1,0 @@
-{"virtualbox":{"/vagrant/pasta_remota":{"create":true,"guestpath":"/vagrant/pasta_remota","hostpath":"D:/project_git/vagrant/vagrant-nginx-shell/pasta_local","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"D:/project_git/vagrant/vagrant-nginx-shell","disabled":false,"__vagrantfile":true}}}

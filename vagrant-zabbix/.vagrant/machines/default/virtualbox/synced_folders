@@ -1,1 +1,1 @@
-{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"D:/project_git/vagrant/vagrant-zabbix","disabled":false,"__vagrantfile":true}}}
+{"virtualbox":{"/vagrant/scripts":{"create":true,"guestpath":"/vagrant/scripts","hostpath":"D:/project_git/vagrant/vagrant-zabbix/scripts","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"D:/project_git/vagrant/vagrant-zabbix","disabled":false,"__vagrantfile":true}}}
